@@ -1,0 +1,10 @@
+{
+    "normalize": false,
+    "weights": {
+    },
+    "terminations": [
+        "base_height",
+        "base_orientation",
+        "collision"
+    ]
+}

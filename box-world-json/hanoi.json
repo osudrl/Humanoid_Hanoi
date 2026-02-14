@@ -1,0 +1,173 @@
+{
+  "plan": [
+    {
+      "unstack": [
+        "b1",
+        "b2",
+        "l1"
+      ]
+    },
+    {
+      "locomotion": [
+        "l1",
+        "l3"
+      ]
+    },
+    {
+      "putdown": [
+        "b1",
+        "l3"
+      ]
+    },
+    {
+      "locomotion": [
+        "l3",
+        "l1"
+      ]
+    },
+    {
+      "unstack": [
+        "b2",
+        "b3",
+        "l1"
+      ]
+    },
+    {
+      "locomotion": [
+        "l1",
+        "l2"
+      ]
+    },
+    {
+      "putdown": [
+        "b2",
+        "l2"
+      ]
+    },
+    {
+      "locomotion": [
+        "l2",
+        "l3"
+      ]
+    },
+    {
+      "pickup": [
+        "b1",
+        "l3"
+      ]
+    },
+    {
+      "locomotion": [
+        "l3",
+        "l2"
+      ]
+    },
+    {
+      "stack": [
+        "b1",
+        "b2",
+        "l2"
+      ]
+    },
+    {
+      "locomotion": [
+        "l2",
+        "l1"
+      ]
+    },
+    {
+      "pickup": [
+        "b3",
+        "l1"
+      ]
+    },
+    {
+      "locomotion": [
+        "l1",
+        "l3"
+      ]
+    },
+    {
+      "putdown": [
+        "b3",
+        "l3"
+      ]
+    },
+    {
+      "locomotion": [
+        "l3",
+        "l2"
+      ]
+    },
+    {
+      "unstack": [
+        "b1",
+        "b2",
+        "l2"
+      ]
+    },
+    {
+      "locomotion": [
+        "l2",
+        "l1"
+      ]
+    },
+    {
+      "putdown": [
+        "b1",
+        "l1"
+      ]
+    },
+    {
+      "locomotion": [
+        "l1",
+        "l2"
+      ]
+    },
+    {
+      "pickup": [
+        "b2",
+        "l2"
+      ]
+    },
+    {
+      "locomotion": [
+        "l2",
+        "l3"
+      ]
+    },
+    {
+      "stack": [
+        "b2",
+        "b3",
+        "l3"
+      ]
+    },
+    {
+      "locomotion": [
+        "l3",
+        "l1"
+      ]
+    },
+    {
+      "pickup": [
+        "b1",
+        "l1"
+      ]
+    },
+    {
+      "locomotion": [
+        "l1",
+        "l3"
+      ]
+    },
+    {
+      "stack": [
+        "b1",
+        "b2",
+        "l3"
+      ]
+    }
+  ],
+  "cost": 27
+}
