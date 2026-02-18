@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement">
+  <meta name="keywords" content="Humanoid Robotics, Whole-Body Control, Box Rearrangement, Skill Composition">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <!-- <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" type="image/png" href="./resources/digit_box.png?v=2">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://min-ku.github.io/" target="_blank" rel="noopener noreferrer">Minku Kim</a><sup>†</sup>,</span>
+            <span class="author-block">
+              <a href="https://mime.engineering.oregonstate.edu/research/drl/people.html" target="_blank" rel="noopener noreferrer">Kuan-Chia Chen</a><sup>†</sup>,</span>
+            <span class="author-block">
+              <a href="https://idigitopia.github.io/" target="_blank" rel="noopener noreferrer">Aayam Shrestha</a>,</span>
+            <span class="author-block">
+              <a href="https://web.engr.oregonstate.edu/~lif/" target="_blank" rel="noopener noreferrer">Li Fuxin</a>,</span>
+            <span class="author-block">
+              <a href="https://web.engr.oregonstate.edu/~leestef/" target="_blank" rel="noopener noreferrer">Stefan Lee</a>,</span>
+            <span class="author-block">
+              <a href="https://web.engr.oregonstate.edu/~afern/" target="_blank" rel="noopener noreferrer">Alan Fern</a>
+            </span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>†</sup>Contributed equally</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Collaborative Robotics and Intelligent Systems Institute</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Oregon State University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2602.13850"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>ArXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/osudrl/Humanoid_Hanoi"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="video-section">
+  <div class="container is-max-desktop">
+    <div class="box">
+      <video class="video" width="100%" controls>
+        <source src="./resources/HH.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="abstract-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We investigate a skill-based framework for humanoid box rearrangement that enables long-horizon execution
+            by sequencing reusable skills at the task level. In our architecture,
+            all skills execute through a shared, task-agnostic whole-body
+            controller (WBC), providing a consistent closed-loop interface
+            for skill composition, in contrast to non-shared designs that
+            use separate low-level controllers per skill.
+          </p>
+          <p>
+            We find that naively
+            reusing the same pretrained WBC can reduce robustness over
+            long horizons, as new skills and their compositions induce
+            shifted state and command distributions. We address this with
+            a simple data aggregation procedure that augments shared-WBC training with rollouts from closed-loop skill execution
+            under domain randomization.
+          </p>
+          <p>
+            To evaluate the approach, we
+            introduce Humanoid Hanoi, a long-horizon Tower-of-Hanoi box
+            rearrangement benchmark, and report results in simulation and
+            on the Digit V3 humanoid robot, demonstrating fully autonomous
+            rearrangement over extended horizons and quantifying the benefits of the shared-WBC approach over non-shared baselines.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <!-- Shared WBC Architecture. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3 has-text-centered">Shared WBC Architecture</h2>
+          <p>
+            Our architecture uses a shared, task-agnostic whole-body controller (WBC) that executes
+            all skills through a unified low-level control interface. This enables skill reuse and
+            simplifies composition without switching control laws at skill boundaries.
+              Independently trained high-level skills generate task-level commands that are executed
+              through the shared WBC, which produces joint-level PD targets tracked by a low-level
+              PD controller on the robot.
+            </p>
+            <p>
+              We extend this architecture with a rollout-based coverage expansion method:
+              closed-loop executions from composed execution in simulation
+              are aggregated to further train the shared WBC. This simple data aggregation procedure
+              improves robustness over long horizons while preserving a single, task-agnostic
+              whole-body controller shared across all skills.
+            </p>
+          </div>
+          <figure class="image" style="margin-top: 1.5rem;">
+            <img src="./resources/system.png" alt="System overview of the shared WBC architecture">
+          </figure>
+        </div>
+      </div>
+  </div>
+</section>
+
+
+<section class="section" id="results-videos">
+  <div class="container is-max-desktop">
+    <!-- Simulation success -->
+    <div class="box">
+      <h3 class="title is-4 has-text-centered">Humanoid Hanoi Simulation Success</h3>
+      <div class="columns">
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/sim_success/sim_success_1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <!-- <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/sim_success/sim_success_2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div> -->
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/sim_success/sim_success_3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Simulation failure -->
+    <div class="box">
+      <h3 class="title is-4 has-text-centered">Humanoid Hanoi Simulation Failure</h3>
+      <div class="columns">
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/sim_failure_mode/sim_fail_1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <!-- <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/sim_failure_mode/sim_fail_2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div> -->
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/sim_failure_mode/sim_fail_3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hardware per skill -->
+    <div class="box">
+      <h3 class="title is-4 has-text-centered">Hardware Pickup and Place Skills</h3>
+      <p class="has-text-centered" style="margin-bottom: 1rem;">
+        Robust over different <strong>target heights</strong>, <strong>target positions</strong>,
+        <strong>box masses</strong>, and <strong>box dimensions</strong>.
+      </p>
+      <div class="columns">
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/hardware_per_skill/skill1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/hardware_per_skill/skill2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/hardware_per_skill/skill3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/hardware_per_skill/skill4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/hardware_per_skill/skill5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/hardware_per_skill/skill6.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/hardware_per_skill/skill7.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/hardware_per_skill/skill8.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="column">
+          <video class="video" width="100%" controls>
+            <source src="./resources/hardware_per_skill/skill9.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hardware config -->
+    <div class="box">
+      <h3 class="title is-4 has-text-centered">Humanoid Hanoi Hardware Success</h3>
+
+      <figure class="image mb-4">
+        <video class="video" width="100%" controls>
+          <source src="./resources/hardware_config/config1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <figcaption class="has-text-centered is-size-6" style="margin-top: 0.5rem;">
+          Configuration 1
+        </figcaption>
+      </figure>
+
+      <figure class="image mb-4">
+        <video class="video" width="100%" controls>
+          <source src="./resources/hardware_config/config2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <figcaption class="has-text-centered is-size-6" style="margin-top: 0.5rem;">
+          Configuration 2
+        </figcaption>
+      </figure>
+
+      <figure class="image">
+        <video class="video" width="100%" controls>
+          <source src="./resources/hardware_config/config3.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <figcaption class="has-text-centered is-size-6" style="margin-top: 0.5rem;">
+          Configuration 3
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- Hardware failure -->
+    <div class="box">
+      <h3 class="title is-4 has-text-centered">Humanoid Hanoi Hardware Failure</h3>
+      <div class="columns">
+        <div class="column">
+          <figure class="image">
+            <video class="video" width="100%" controls>
+              <source src="./resources/hardware_failure/failure1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <figcaption class="has-text-centered is-size-6" style="margin-top: 0.5rem;">
+              Perception and box state estimation error
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column">
+          <figure class="image">
+            <video class="video" width="100%" controls>
+              <source src="./resources/hardware_failure/failure2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <figcaption class="has-text-centered is-size-6" style="margin-top: 0.5rem;">
+              Localization error
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <figure class="image">
+            <video class="video" width="100%" controls>
+              <source src="./resources/hardware_failure/failure3.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <figcaption class="has-text-centered is-size-6" style="margin-top: 0.5rem;">
+              Physical interaction during placement
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column">
+          <figure class="image">
+            <video class="video" width="100%" controls>
+              <source src="./resources/hardware_failure/failure4.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <figcaption class="has-text-centered is-size-6" style="margin-top: 0.5rem;">
+              Unstable stand
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{kim2026humanoidhanoiinvestigatingshared,
+      title={Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement}, 
+      author={Minku Kim and Kuan-Chia Chen and Aayam Shrestha and Li Fuxin and Stefan Lee and Alan Fern},
+      year={2026},
+      eprint={2602.13850},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2602.13850}, 
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./resources/Humanoid_Hanoi.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link external-link" href="https://mime.engineering.oregonstate.edu/research/drl/">
+        <i class="fas fa-university"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website is based on the <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies website template</a>.
+            The template is licensed under Creative Commons Attribution-ShareAlike 4.0 International License.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
