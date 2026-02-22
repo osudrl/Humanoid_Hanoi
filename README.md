@@ -63,13 +63,10 @@ During interactive evaluation, press the `'r'` key to reset the environment.
 If you find this repository useful, please consider giving a star ⭐ and citation 📦:
 
 ```bibtex
-@misc{kim2026humanoidhanoiinvestigatingshared,
-      title={Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement}, 
-      author={Minku Kim and Kuan-Chia Chen and Aayam Shrestha and Li Fuxin and Stefan Lee and Alan Fern},
-      year={2026},
-      eprint={2602.13850},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO},
-      url={https://arxiv.org/abs/2602.13850}, 
+@article{kim2026humanoid,
+  title={Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement},
+  author={Kim, Minku and Chen, Kuan-Chia and Shrestha, Aayam and Fuxin, Li and Lee, Stefan and Fern, Alan},
+  journal={arXiv preprint arXiv:2602.13850},
+  year={2026}
 }
 ```
