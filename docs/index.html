@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Humanoid Hanoi is a long-horizon Tower-of-Hanoi box rearrangement benchmark for humanoid robots using shared whole-body control and skill-based planning.">
-  <meta name="keywords" content="Humanoid Robotics, Whole-Body Control, Box Rearrangement, Skill Composition">
+        content="Humanoid Hanoi is a challenge problem for long-horizon humanoid skill composition that studies shared whole-body control for box rearrangement.">
+  <meta name="keywords" content="Humanoid Learning, Hierarchical Control, Challenge Problems, Whole-Body Control, Box Rearrangement, Skill Composition">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="5n2ikzHyY0Ixw3yuGs1UBJnOC_GMSwsg-yeIu8MrJlI" />
   <meta property="og:title" content="Humanoid Hanoi">
-  <meta property="og:description" content="A long-horizon humanoid manipulation benchmark using shared whole-body control.">
+  <meta property="og:description" content="A long-horizon humanoid skill-composition challenge using shared whole-body control.">
   <meta property="og:type" content="website">
   <title>Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement</title>
 
@@ -63,6 +63,9 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement</h1>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block has-text-weight-semibold has-text-danger">Accepted at CoRL 2026!</span>
+          </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://min-ku.github.io/" target="_blank" rel="noopener noreferrer">Minku Kim</a><sup>†</sup>,</span>
@@ -150,27 +153,21 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We investigate a skill-based framework for humanoid box rearrangement that enables long-horizon execution
-            by sequencing reusable skills at the task level. In our architecture,
-            all skills execute through a shared, task-agnostic whole-body
-            controller (WBC), providing a consistent closed-loop interface
-            for skill composition, in contrast to non-shared designs that
-            use separate low-level controllers per skill.
-          </p>
-          <p>
-            We find that naively
-            reusing the same pretrained WBC can reduce robustness over
-            long horizons, as new skills and their compositions induce
-            shifted state and command distributions. We address this with
-            a simple data aggregation procedure that augments shared-WBC training with rollouts from closed-loop skill execution
-            under domain randomization.
-          </p>
-          <p>
-            To evaluate the approach, we
-            introduce Humanoid Hanoi, a long-horizon Tower-of-Hanoi box
-            rearrangement benchmark, and report results in simulation and
-            on the Digit V3 humanoid robot, demonstrating fully autonomous
-            rearrangement over extended horizons and quantifying the benefits of the shared-WBC approach over non-shared baselines.
+            We introduce Humanoid Hanoi, a challenge problem for long-horizon humanoid skill composition
+            that requires a robot to repeatedly sequence pickup, locomotion, and placement skills to
+            rearrange stacked boxes in simulation and on hardware. This symbolically simple task exposes a
+            weakness in a common modular humanoid architecture, where reusable high-level skills are learned
+            on top of a shared, task-agnostic whole-body controller (WBC). While such a WBC provides a unified
+            low-level interface for skill composition, it may not be sufficiently hardened to execute the full
+            collection of learned skills under domain randomization and long-horizon closed-loop execution. We
+            compare task-agnostic strategies for addressing this issue, including skill-specific WBC fine-tuning,
+            residual low-level adaptation, and a rollout aggregation procedure that augments shared-WBC training
+            with closed-loop rollouts from each individual skill under domain randomization. Our experiments show
+            that the strongest long-horizon robustness is achieved not through skill-specific specialization, but
+            by incrementally expanding the closed-loop coverage of the shared WBC while preserving its original
+            task-agnostic tracking objective. Results in simulation and on the Digit V3 humanoid demonstrate
+            improved long-horizon robustness and suggest that preserving low-level controller consistency can be
+            as important as improving individual skills.
           </p>
         </div>
       </div>
@@ -196,10 +193,10 @@
             </p>
             <p>
               We extend this architecture with a rollout-based coverage expansion method:
-              closed-loop executions from composed execution in simulation
-              are aggregated to further train the shared WBC. This simple data aggregation procedure
-              improves robustness over long horizons while preserving a single, task-agnostic
-              whole-body controller shared across all skills.
+              closed-loop rollouts from each individual skill under domain randomization are aggregated
+              to further train the shared WBC. This procedure expands the controller's state-command
+              coverage, improves robustness over long horizons, and preserves the original task-agnostic
+              tracking objective and a consistent low-level interface across skills.
             </p>
           </div>
           <figure class="image" style="margin-top: 1.5rem;">
